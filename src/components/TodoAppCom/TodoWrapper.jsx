@@ -9,14 +9,11 @@ const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    console.log('Fetching todos from localStorage...');
     const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-    console.log('Fetched todos:', savedTodos);
     setTodos(savedTodos);
   }, []);
 
   useEffect(() => {
-    console.log('Saving todos to localStorage:', todos);
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
@@ -26,7 +23,6 @@ const TodoWrapper = () => {
       { id: uuidv4(), task: todo, completed: false, isEditing: false },
     ];
     setTodos(newTodos);
-    console.log('Added todo:', newTodos);
   };
 
   const toggleComplete = (id) => {
@@ -34,7 +30,6 @@ const TodoWrapper = () => {
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(newTodos);
-    console.log('Toggled complete:', newTodos);
   };
 
   const editTodo = (id) => {
@@ -42,7 +37,6 @@ const TodoWrapper = () => {
       todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
     );
     setTodos(newTodos);
-    console.log('Editing todo:', newTodos);
   };
 
   const editTask = (task, id) => {
@@ -50,18 +44,16 @@ const TodoWrapper = () => {
       todo.id === id ? { ...todo, task, isEditing: false } : todo
     );
     setTodos(newTodos);
-    console.log('Edited task:', newTodos);
   };
 
   const deleteTodo = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
-    console.log('Deleted todo:', newTodos);
   };
 
   return (
     <div className="todo-wrapper">
-      <Typography className="heading-todo">Get Things Done!</Typography>
+      <Typography className="heading-todo">Add Today Task !</Typography>
       <TodoForm addTodo={addTodo} />
       {todos.map((todo) =>
         todo.isEditing ? (

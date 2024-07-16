@@ -11,7 +11,6 @@ const TodoForm = ({addTodo}) => {
             setValue('');
           }
         };
-        console.log(value);
   return (
     <>
       <Row>

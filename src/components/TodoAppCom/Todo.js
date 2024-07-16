@@ -7,8 +7,7 @@ import {
   } from '@ant-design/icons';
 
 const Todo = ({task, deleteTodo, editTodo, toggleComplete}) => {
-
-    
+  
   return (
     < >
 
